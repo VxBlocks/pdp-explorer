@@ -7,6 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import GoBackLink from '@/components/go-back'
 
 interface GasMetrics {
   gasHigh: string
@@ -125,6 +126,9 @@ export const GasCalculator = () => {
     <div className="p-6 max-w-7xl mx-auto">
       <div>
         <div className="mb-8">
+          <div className="mb-6">
+            <GoBackLink />
+          </div>
           <h1 className="text-2xl font-bold mb-4">
             PDP Gas & Costs Calculator
           </h1>
@@ -458,9 +462,8 @@ export const GasCalculator = () => {
                       <td className="p-2 border-b text-xs text-gray-800">
                         {proofCount === 1 && dayCount === 1
                           ? 'Daily gas fee (FIL)'
-                          : `Gas fee per day (FIL, for ${proofCount} proof${
-                              proofCount > 1 ? 's' : ''
-                            } per ${dayCount} day${dayCount > 1 ? 's' : ''})`}
+                          : `Gas fee per day (FIL, for ${proofCount} proof${proofCount > 1 ? 's' : ''
+                          } per ${dayCount} day${dayCount > 1 ? 's' : ''})`}
                       </td>
                       <td className="p-2 border-b text-xs text-gray-800 font-mono">
                         {metrics.gasAvg}
@@ -476,9 +479,8 @@ export const GasCalculator = () => {
                       <td className="p-2 border-b text-xs text-gray-800">
                         {proofCount === 1 && dayCount === 1
                           ? 'Daily PDP proof fee (FIL)'
-                          : `PDP proof fee per day (FIL, for ${proofCount} proof${
-                              proofCount > 1 ? 's' : ''
-                            } per ${dayCount} day${dayCount > 1 ? 's' : ''})`}
+                          : `PDP proof fee per day (FIL, for ${proofCount} proof${proofCount > 1 ? 's' : ''
+                          } per ${dayCount} day${dayCount > 1 ? 's' : ''})`}
                       </td>
                       <td className="p-2 border-b text-xs text-gray-800 font-mono">
                         {metrics.pdpAvg}
