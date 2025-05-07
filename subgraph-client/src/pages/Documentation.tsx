@@ -5,7 +5,7 @@ import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 import slugify from 'slugify'
 import { useParams, Link, useNavigate } from 'react-router-dom'
-import { ChevronRight, FileText, Book, ArrowLeft } from 'lucide-react'
+import { ChevronRight, FileText, Book } from 'lucide-react'
 import GoBackLink from '@/components/go-back'
 
 // Documentation structure

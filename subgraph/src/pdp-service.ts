@@ -111,8 +111,14 @@ export function findChallengedRoots(
     Address.fromBytes(Bytes.fromHexString(PDPVerifierAddress))
   );
 
-  const seedInt = instance.getRandomness(challengeEpoch);
-  const seedHex = ensureEvenHex(seedInt);
+  const seedInt = instance.try_getRandomness(challengeEpoch);
+  if (seedInt.reverted) {
+    log.warning("findChallengedRoots: Failed to try_getRandomness for epoch {}", [
+      challengeEpoch.toString(),
+    ]);
+    return [];
+  }
+  const seedHex = ensureEvenHex(seedInt.value);
 
   if (!seedInt) {
     log.warning("findChallengedRoots: Failed to get randomness for epoch {}", [

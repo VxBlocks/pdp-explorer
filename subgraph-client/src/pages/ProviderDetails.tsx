@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { ProviderOverviewCard } from '@/components/ProviderDetails/ProviderOverviewCard'
 import { ProviderActivityChart } from '@/components/ProviderDetails/ProviderActivityChart'
 import { ProviderProofSetsTable } from '@/components/ProviderDetails/ProviderProofSetsTable'
