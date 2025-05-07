@@ -35,7 +35,7 @@ export default function PageHeader() {
                     to="https://github.com/FilOzone/pdp-explorer"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 text-sm font-medium transition-colors flex items-center"
+                    className="text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 text-sm font-medium transition-colors flex items-center"
                     aria-label="GitHub Repository"
                 >
                     <Github className="h-5 w-5" /> GitHub
