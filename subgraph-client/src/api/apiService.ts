@@ -53,7 +53,7 @@ export const search = async (
               address_contains: normalizeBytesFilter(trimmedQuery),
             }
           : { address: null },
-        where_proofset: { setId: isProofSet ? trimmedQuery : null },
+        where_proofset: { setId: isProofSet ? String(Number(trimmedQuery)) : null },
         where_root: { cid: cid ? cid : null },
       },
     ])
