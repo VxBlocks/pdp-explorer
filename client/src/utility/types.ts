@@ -1,0 +1,126 @@
+export interface NetworkMetrics {
+    id: string
+    totalActiveProofSets: string
+    totalActiveRoots: string
+    totalDataSize: string
+    totalFaultedRoots: string
+    totalFaultedPeriods: string
+    totalProofFeePaidInFil: string
+    totalProofSets: string
+    totalProofs: string
+    totalProvedRoots: string
+    totalProviders: string
+    totalRoots: string
+}
+
+export interface Provider {
+    providerId: string
+    totalFaultedPeriods: number
+    totalDataSize: string
+    proofSetIds: number[]
+    blockNumber: number
+    blockHash: string
+    createdAt: string
+    updatedAt: string
+    activeProofSets: number
+    numRoots: number
+    firstSeen: string
+    lastSeen: string
+}
+
+export interface ProofSet {
+    setId: number
+    owner: string
+    listenerAddr: string
+    totalFaultedPeriods: number
+    totalDataSize: string
+    totalRoots: number
+    totalProvedRoots: number
+    totalFeePaid: string
+    lastProvenEpoch: number
+    nextChallengeEpoch: number
+    isActive: boolean
+    blockNumber: number
+    blockHash: string
+    createdAt: string
+    updatedAt: string
+    transactions?: Transaction[]
+}
+
+export interface ProviderDetailsResponse extends Provider {
+    proofSets: ProofSet[]
+}
+
+export interface ProviderActivitiesParams {
+    providerId: string
+    type: 'prove_possession' | 'fault_recorded'
+    startDate?: string
+    endDate?: string
+}
+
+
+
+export interface Root {
+    id: string
+    rootId: string
+    cid: string
+    rawSize: string
+    removed: boolean
+    totalProofsSubmitted: string
+    totalPeriodsFaulted: string
+    lastProvenEpoch: string
+    lastFaultedEpoch: string
+    lastProvenAt: string
+    lastFaultedAt: string
+
+    proofSet?: ProofSet
+}
+
+export interface Transaction {
+    id: string
+    hash: string
+    height: string
+    method: string
+    status: string
+    value: string
+    createdAt: string
+}
+
+export interface EventLog {
+    id: string
+    name: string
+    transactionHash: string
+    blockNumber: string
+    createdAt: string
+    data: string
+}
+
+export interface Activity {
+    id: string
+    totalDataSizeAdded: string
+    totalDataSizeRemoved: string
+    totalFaultedPeriods: string
+    totalProofs: string
+    totalRootsAdded: string
+    totalFaultedRoots: string
+    totalRootsProved: string
+    totalRootsRemoved: string
+}
+
+export interface WeeklyProviderActivity extends Activity {
+    providerId: string
+    totalProofSetsCreated: string
+}
+
+export interface MonthlyProviderActivity extends Activity {
+    providerId: string
+    totalProofSetsCreated: string
+}
+
+export interface WeeklyProofSetActivity extends Activity {
+    proofSetId: string
+}
+
+export interface MonthlyProofSetActivity extends Activity {
+    proofSetId: string
+}

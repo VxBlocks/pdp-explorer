@@ -1,102 +1,14 @@
 import { getRequest } from '@/utility/generalServices'
+import { Activity, ProviderActivitiesParams, ProviderDetailsResponse } from '@/utility/types'
 
-export interface Provider {
-  providerId: string
-  totalFaultedPeriods: number
-  totalDataSize: string
-  proofSetIds: number[]
-  blockNumber: number
-  blockHash: string
-  createdAt: string
-  updatedAt: string
-  activeProofSets: number
-  numRoots: number
-  firstSeen: string
-  lastSeen: string
-}
-
-export interface ProviderDetailsResponse extends Provider {
-  proofSets: ProofSet[]
-}
-
-export interface Activity {
+export interface SearchResult {
+  type: 'provider' | 'proofset' | 'root'
   id: string
-  type: string
-  timestamp: string
-  details: string
-  value: number
+  provider_id?: string
+  active_sets?: number
+  data_size: string
+  total_roots?: number
 }
-
-export interface ProofSet {
-  setId: number
-  owner: string
-  listenerAddr: string
-  totalFaultedPeriods: number
-  totalDataSize: string
-  totalRoots: number
-  totalProvedRoots: number
-  totalFeePaid: string
-  lastProvenEpoch: number
-  nextChallengeEpoch: number
-  isActive: boolean
-  blockNumber: number
-  blockHash: string
-  createdAt: string
-  updatedAt: string
-  transactions?: Transaction[]
-}
-
-export interface Transaction {
-  hash: string
-  proofSetId: number
-  messageId: string
-  height: number
-  fromAddress: string
-  toAddress: string
-  value: string
-  method: string
-  status: boolean
-  blockNumber: number
-  blockHash: string
-  createdAt: string
-}
-
-export interface HeatmapEntry {
-  date: string
-  status: string
-  rootPieceId: string
-}
-
-export interface ProviderActivitiesParams {
-  providerId: string
-  type: 'prove_possession' | 'fault_recorded'
-  startDate?: string
-  endDate?: string
-}
-
-export interface EventLog {
-  eventName: string
-  data: string
-  blockNumber: number
-  transactionHash: string
-  logIndex: number
-  createdAt: string
-}
-
-export interface Roots {
-  rootId: number
-  cid: string
-  size: number
-  removed: boolean
-  totalPeriodsFaulted: number
-  totalProofsSubmitted: number
-  lastProvenEpoch: number
-  lastProvenAt: string | null
-  lastFaultedEpoch: number
-  lastFaultedAt: string | null
-  createdAt: string
-}
-
 // Provider-related API calls
 export async function getProviders(offset = 0, limit = 10, search = '') {
   const queryParams = new URLSearchParams({
@@ -222,7 +134,7 @@ export const getProofSetRoots = async (
   proofSetId: string,
   offset: number = 0,
   limit: number = 10,
-  orderBy: string = 'rootId',
+  orderBy: string = 'root_id',
   order: string = 'asc'
 ) => {
   const response = await getRequest(
