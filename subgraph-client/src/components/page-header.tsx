@@ -32,7 +32,7 @@ export default function PageHeader() {
                     Gas Calculator
                 </Link>
                 <Link
-                    to="https://github.com/FilOzone/pdp-explorer"
+                    to="https://github.com/VxBlocks/pdp-explorer"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 text-sm font-medium transition-colors flex items-center"
